@@ -1,5 +1,5 @@
 # 232CC232Project
-\h3{Clase Transaction:}
+<h3>{Clase Transaction:}</h3>
 
 Representa una transacción con un nombre, un conjunto de registros bloqueados (locks), y un conjunto de transacciones a las que está esperando (waitingFor).
 Tiene métodos para bloquear y desbloquear registros, así como para agregar y quitar transacciones a las que está esperando.
