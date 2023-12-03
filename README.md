@@ -11,7 +11,7 @@ Las transacciones se ejecutan mediante comandos que especifican la operación ("
 <h3>Método executeTransactions:</h3>
 
 Itera sobre los comandos y ejecuta las operaciones correspondientes, manteniendo un registro de las transacciones en el mapa.
-<h3>{Métodos readRecord y writeRecord:</h3>
+<h3>Métodos readRecord y writeRecord:</h3>
 
 Realizan operaciones de lectura y escritura, bloqueando el registro y actualizando el grafo de espera.
 <h3>Método endTransaction:</h3>
@@ -26,7 +26,7 @@ Utiliza el algoritmo de búsqueda en profundidad (DFS) para detectar ciclos en e
 <h3>Método findCycle:</h3>
 
 Implementa el algoritmo DFS para encontrar ciclos en el grafo de espera.
-<h3>Método getLastTransactionInCycle:}
+<h3>Método getLastTransactionInCycle:</h3>
 
 Obtiene la transacción más reciente en un ciclo dado.
 <h3>Método main:</h3>
