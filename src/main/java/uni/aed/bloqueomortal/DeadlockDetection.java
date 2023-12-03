@@ -7,41 +7,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-class Transaction {
-    private String name;
-    Set<String> locks;  // Registros bloqueados por la transacción
-    Set<String> waitingFor;  // Transacciones a las que la transacción actual está esperando
-
-    public Transaction(String name) {
-        this.name = name;
-        locks = new HashSet<>();
-        waitingFor = new HashSet<>();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void lockRecord(String record) {
-        locks.add(record);
-    }
-
-    public void unlockRecord(String record) {
-        locks.remove(record);
-    }
-
-    public void addWaitingTransaction(String transaction) {
-        waitingFor.add(transaction);
-    }
-
-    public void removeWaitingTransaction(String transaction) {
-        waitingFor.remove(transaction);
-    }
-}
-
+/**
+ * Clase que implementa la detección de puntos muertos en un sistema de transacciones y registros.
+ */
 public class DeadlockDetection {
     private Map<String, Transaction> transactions;  // Mapa de transacciones por nombre
 
+    /**
+     * Constructor de la clase DeadlockDetection.
+     * Inicializa el mapa de transacciones.
+     */
     public DeadlockDetection() {
         transactions = new HashMap<>();
     }
@@ -131,7 +106,7 @@ public class DeadlockDetection {
      * Detecta si hay un punto muerto en las transacciones y muestra la transacción más reciente en el ciclo.
      * Si no se encuentra ningún punto muerto, se muestra un mensaje indicando que no se encontraron puntos muertos.
      */
-    private void detectDeadlock() {
+    void detectDeadlock() {
         Set<Transaction> visited = new HashSet<>();
         Set<Transaction> inProgress = new HashSet<>();
 
@@ -199,18 +174,5 @@ public class DeadlockDetection {
             }
         }
         return lastTransaction;
-    }
-
-    public static void main(String[] args) {
-        DeadlockDetection deadlockDetection = new DeadlockDetection();
-        List<String> commands = new ArrayList<>();
-        commands.add("read,T1,A");
-        commands.add("read,T2,A");
-        commands.add("write,T2,B");
-        commands.add("write,T1,B");
-        commands.add("end,T1");
-        commands.add("end,T2");
-        deadlockDetection.executeTransactions(commands);
-        deadlockDetection.detectDeadlock();
     }
 }
